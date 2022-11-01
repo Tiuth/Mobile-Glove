@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Mobile Glove</string>
+    <string name="scanBtn">Scan for devices</string>
+    <string name="scanResults">Scan results</string>
+    <string name="selectedDevice">Selected Device</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="connecting">Connecting …</string>
+    <string name="connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="gestureStatus">Gesture Status</string>
+    <string name="notAvailable">Not Available</string>
+</resources>
