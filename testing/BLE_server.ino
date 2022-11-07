@@ -15,15 +15,25 @@
 #define CHARACTERISTIC_UUID "beb5483e-36e1-4688-b7f5-ea07361b26a8"
 #define CCCD_UUID "00002902-0000-1000-8000-00805f9b34fb"
 
+bool connection_status = false;
 char value = '0';
 BLECharacteristic *pCharacteristic;
 
 class BleServerCallbacks: public BLEServerCallbacks {
+    bool* status;
+  
+    public:
+      BleServerCallbacks(bool* stat) {
+        status = stat;
+      }
+  
     void onConnect(BLEServer* pServer) {
+      *status = true;
     };
 
     void onDisconnect(BLEServer* pServer) {
       BLEDevice::startAdvertising();
+      *status = false;
     }
 };
 
@@ -33,7 +43,7 @@ void setup() {
 
   BLEDevice::init("Phone Glove");
   BLEServer *pServer = BLEDevice::createServer();
-  pServer->setCallbacks(new BleServerCallbacks());
+  pServer->setCallbacks(new BleServerCallbacks(&connection_status));
   BLEService *pService = pServer->createService(SERVICE_UUID);
   pCharacteristic = pService->createCharacteristic(
                                          CHARACTERISTIC_UUID,
@@ -65,4 +75,5 @@ void loop() {
     value = '0';
   pCharacteristic->setValue(&value);
   pCharacteristic->notify();
+  Serial.println(connection_status);
 }
