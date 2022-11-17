@@ -1,4 +1,4 @@
-//#if MOBILE_GLOVE
+#if GLOVE_MODE == MOBILE_GLOVE
 
 #include <BLEDevice.h>
 #include <BLEUtils.h>
@@ -76,3 +76,4 @@ private:
       return pCharacteristic->getValue()
     }
 };
+#endif

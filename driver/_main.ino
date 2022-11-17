@@ -37,6 +37,8 @@ void loop() {
     int* fingerPos = getFingerPositions(calibrate, calibButton);
     bool joyButton = getButton(PIN_JOY_BTN) != INVERT_JOY;
 
+    #if GLOVE_MODE == VR_GLOVE
+
     #if TRIGGER_GESTURE
     bool triggerButton = triggerGesture(fingerPos);
     #else
@@ -69,6 +71,23 @@ void loop() {
         decodeData(received, hapticLimits);
         writeServoHaptics(hapticLimits);
       }
+    #endif
+
+    #endif // of GLOVE_MODE == VR_GLOVE
+
+    #if GLOVE_MODE == MOBILE_GLOVE
+
+    if(thumbGesture(fingerPos))
+      comm->output(char(THUMB_GESTURE));
+    else if(indexFingerGesture(fingerPos))
+      comm->output(char(INDEX_GESTURE));
+    else if(middleFingerGesture(fingerPos))
+      comm->output(char(MIDDLE_GESTURE));
+    else if(ringFingerGesture(fingerPos))
+      comm->output(char(RING_GESTURE));
+    else if(pinkieFingerGesture(fingerPos))
+      comm->output(char(PINKIE_GESTURE));
+
     #endif
   }
   delay(LOOP_TIME);

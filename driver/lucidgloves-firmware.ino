@@ -8,8 +8,8 @@
 
 //This is the configuration file, main structure in _main.ino
 //CONFIGURATION SETTINGS:
-//Whether to use the Glove as Mobile Glove or not
-#define MOBILE_GLOVE true
+//Wether to use the Glove as Mobile Glove or VR-Glove
+#define GLOVE_MODE MOBILE_GLOVE
 #define MOBILE_GLOVE_NAME "Mobile Glove"
 
 #define COMMUNICATION COMM_SERIAL //Which communication protocol to use

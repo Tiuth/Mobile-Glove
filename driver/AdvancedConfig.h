@@ -7,7 +7,18 @@
 #define CHARACTERISTIC_UUID "beb5483e-36e1-4688-b7f5-ea07361b26a8"
 #define CCCD_UUID "00002902-0000-1000-8000-00805f9b34fb"
 
+//gesture defines
 #define UNDEFINED_GESTURE 99
+#define THUMB_GESTURE 0
+#define INDEX_GESTURE 1
+#define MIDDLE_GESTURE 2
+#define RING_GESTURE 3
+#define PINKIE_GESTURE 4
+#define FINGER_VALID_PERC 0.8
+
+//Mode defines
+#define VR_GLOVE 0
+#define MOBILE_GLOVE 1
 
 //Comm defines, no touchy
 #define COMM_SERIAL 0   
