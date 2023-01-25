@@ -8,13 +8,15 @@
 #define CCCD_UUID "00002902-0000-1000-8000-00805f9b34fb"
 
 //gesture defines
-#define UNDEFINED_GESTURE 99
+#define NEUTRAL_GESTURE 99
 #define THUMB_GESTURE 0
 #define INDEX_GESTURE 1
 #define MIDDLE_GESTURE 2
 #define RING_GESTURE 3
 #define PINKIE_GESTURE 4
-#define FINGER_VALID_PERC 0.8
+
+#define FINGER_PINCHED_PERC 0.8
+#define FINGER_STRETCHED_PERC 0.5
 
 //Mode defines
 #define VR_GLOVE 0

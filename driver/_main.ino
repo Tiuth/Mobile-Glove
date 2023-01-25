@@ -77,17 +77,27 @@ void loop() {
 
     #if GLOVE_MODE == MOBILE_GLOVE
 
-    if(thumbGesture(fingerPos))
-      comm->output(char(THUMB_GESTURE));
-    else if(indexFingerGesture(fingerPos))
-      comm->output(char(INDEX_GESTURE));
-    else if(middleFingerGesture(fingerPos))
-      comm->output(char(MIDDLE_GESTURE));
-    else if(ringFingerGesture(fingerPos))
-      comm->output(char(RING_GESTURE));
-    else if(pinkieFingerGesture(fingerPos))
-      comm->output(char(PINKIE_GESTURE));
+    static int last_gesture = NEUTRAL_GESTURE;
+    static int detected_gesture = NEUTRAL_GESTURE;
 
+    if(thumbGesture(fingerPos))
+      detected_gesture = THUMB_GESTURE;
+    else if(indexFingerGesture(fingerPos))
+      detected_gesture = INDEX_GESTURE;
+    else if(middleFingerGesture(fingerPos))
+      detected_gesture = MIDDLE_GESTURE;
+    else if(ringFingerGesture(fingerPos))
+      detected_gesture = RING_GESTURE;
+    else if(pinkieFingerGesture(fingerPos))
+      detected_gesture = PINKIE_GESTURE;
+    else if(neutralGesture(fingerPos))
+      detected_gesture = NEUTRAL_GESTURE;
+
+    if (detected_gesture != last_gesture)
+    {
+      comm->output(char(detected_gesture));
+      last_gesture = detected_gesture;
+    }
     #endif
   }
   delay(LOOP_TIME);

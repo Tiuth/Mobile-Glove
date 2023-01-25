@@ -38,7 +38,7 @@ private:
     }
 
     void start(){
-      BLEDevice::init("Phone Glove");
+      BLEDevice::init("Mobile Glove");
       BLEServer *pServer = BLEDevice::createServer();
       //pass m_isOpen here so it will be set according to the connection status
       pServer->setCallbacks(new BleServerCallbacks(&m_isOpen));
