@@ -74,7 +74,7 @@ class DeviceActivity : AppCompatActivity() {
         setContentView(R.layout.activity_device)
 
         deviceName = intent.getStringExtra(DEVICE_NAME)
-        deviceAddress = intent.getStringExtra(DEVICE_ADDRESS) as String
+        deviceAddress = intent.getStringExtra(DEVICE_ADDRESS) as String //"12345678"
 
         // bind this Activity to the BLeService
         val gattServiceIntent = Intent(this, BluetoothLeService::class.java)
@@ -113,7 +113,7 @@ class DeviceActivity : AppCompatActivity() {
             bluetoothService?.setCharacteristicNotification(gestureCharacteristic, true)
         }
         else {
-            val toast = Toast.makeText(this, "The Device doesn't provide the needed BLE Service", Toast.LENGTH_LONG)
+            val toast = Toast.makeText(this, "The Device doesn't provide the required BLE Service", Toast.LENGTH_LONG)
             toast.show()
         }
     }

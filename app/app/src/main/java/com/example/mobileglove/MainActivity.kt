@@ -94,6 +94,8 @@ class MainActivity : AppCompatActivity() {
         scanBtn.setOnClickListener {
             scanForBleDevices()
             //deviceNames.add("Test1")
+            //deviceNames.add("Test2")
+            //deviceNames.add("Test3")
             deviceAdapter.notifyDataSetChanged()
         }
 
@@ -124,7 +126,7 @@ class MainActivity : AppCompatActivity() {
     private val leScanCallback: ScanCallback = object : ScanCallback() {
         @SuppressLint("MissingPermission")
         override fun onScanResult(callbackType: Int, result: ScanResult) {
-            // if the device has a name use the name otherwise the address
+            // if the device has a name use the name otherwise use the address
             val devName = result.device.name ?: result.device.address
             if (!deviceNames.contains(devName)) {
                 Log.i("Ble Scan", "Found a device")

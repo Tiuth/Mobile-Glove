@@ -40,10 +40,10 @@ class BluetoothLeService : Service() {
     fun initialize(): Boolean {
         mediaBtnManager = MediaBtnManager(this)
         gestureCallbacks = arrayOf( mediaBtnManager::nextBtn,
-        mediaBtnManager::previousBtn,
-        mediaBtnManager::playPauseBtn,
-        mediaBtnManager::volumeUpBtn,
-        mediaBtnManager::volumeDownBtn)
+                                    mediaBtnManager::previousBtn,
+                                    mediaBtnManager::playPauseBtn,
+                                    mediaBtnManager::volumeUpBtn,
+                                    mediaBtnManager::volumeDownBtn)
         if (Build.VERSION.SDK_INT > 30) {
             bConnectPermissionCheck = Manifest.permission.BLUETOOTH_CONNECT
         }
